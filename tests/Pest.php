@@ -14,9 +14,15 @@ use Tests\TestCase;
 |
 */
 
+/*
+| Unit tests that need the application container (database, models) live in
+| the "Unit" directory but must boot the framework too, so they use the same
+| TestCase with an in-memory SQLite database.
+*/
+
 pest()->extend(TestCase::class)
     ->use(RefreshDatabase::class)
-    ->in('Feature');
+    ->in('Feature', 'Unit');
 
 /*
 |--------------------------------------------------------------------------
@@ -43,8 +49,3 @@ expect()->extend('toBeOne', function () {
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
-
-function something()
-{
-    // ..
-}
