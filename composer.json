@@ -1,19 +1,18 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/blank-react-starter-kit",
+    "name": "library-books/api",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "API REST para la gestión de una biblioteca de libros (Laravel + PostgreSQL).",
     "keywords": [
         "laravel",
-        "framework"
+        "api",
+        "library"
     ],
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "inertiajs/inertia-laravel": "^3.0",
         "laravel/framework": "^13.17",
-        "laravel/tinker": "^3.0",
-        "laravel/wayfinder": "^0.1.14"
+        "laravel/tinker": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.24",
@@ -45,9 +44,7 @@
             "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
-            "@php artisan migrate --force",
-            "npm install",
-            "npm run build"
+            "@php artisan migrate --seed --force"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
@@ -61,8 +58,7 @@
         ],
         "ci:check": [
             "Composer\\Config::disableProcessTimeout",
-            "npm run check",
-            "npm run types:check",
+            "npm --prefix frontend run types:check",
             "@test"
         ],
         "types:check": [

@@ -2,4 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::inertia('/', 'welcome')->name('home');
+Route::get('/', fn () => response()->json([
+    'name' => config('app.name'),
+    'version' => 'v1',
+    'docs' => url('/api/v1/books'),
+]));
